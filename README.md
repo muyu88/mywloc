@@ -1,10 +1,10 @@
 <p align="center"><img src="wloc.jpg" width="144" alt="WLOC 图标" /></p>
 
-# WLOC 社区维护版
+# MyWLoc
 
 基于 Yu9191/wloc 恢复的 Apple 网络定位修改工具。通过 Surge、Quantumult X、Loon、Stash 或 Shadowrocket 拦截 Wi-Fi / 基站网络定位响应，配合网页选点、快捷指令和代理客户端本地持久化存储使用。
 
-本分支保留上游作者及贡献者记录，以 `529fcd8`（2026-09-04）为恢复基线。它不是原作者官方仓库，也不能修改 GPS 硬件定位。
+本仓库由 `muyu88` 自托管维护，保留上游作者及贡献者记录，以 `529fcd8`（2026-09-04）为恢复基线。它不是原作者官方仓库，也不能修改 GPS 硬件定位。
 
 > [!IMPORTANT]
 > ## ⚠️ iOS 27 正式版当前不支持
@@ -53,7 +53,7 @@ flowchart TD
 → 在“证书信任设置”中开启完全信任
 → 确认代理 / VPN 正常连接
 → 在地图中选择目标位置
-→ 分享到「WLOC设置位置 xepes0」
+→ 分享到「MyWLoc设置位置」
 → 快捷指令保存坐标并跳转到“定位服务”
 → 关闭定位服务
 → 开启飞行模式
@@ -87,15 +87,15 @@ flowchart LR
 <!-- subscriptions:start -->
 | 客户端 | 订阅地址 |
 | --- | --- |
-| Surge / Egern | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.sgmodule](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.sgmodule) |
-| Quantumult X | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.conf](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.conf) |
-| Loon | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.lpx](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.lpx) |
-| Stash | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.stoverride](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.stoverride) |
-| Shadowrocket | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.module](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.module) |
+| Surge / Egern | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.sgmodule](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.sgmodule) |
+| Quantumult X | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.conf](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.conf) |
+| Loon | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.lpx](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.lpx) |
+| Stash | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.stoverride](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.stoverride) |
+| Shadowrocket | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.module](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.module) |
 
-选点页面：[https://wloc.xepesw.workers.dev/](https://wloc.xepesw.workers.dev/)。
+选点页面：尚未配置公共实例，请按下方说明自行部署。
 
-[浏览源码](https://github.com/xepes0/wloc) · [部署到 Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/xepes0/wloc/tree/main/worker)
+[浏览源码](https://github.com/muyu88/mywloc) · [部署到 Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/muyu88/mywloc/tree/main/worker)
 <!-- subscriptions:end -->
 
 Egern 沿用上游 Surge 模块兼容说明，尚未单独复核。Stash 使用原生 `.stoverride`。
@@ -223,16 +223,16 @@ Certificate
 
 | 快捷指令 | 安装入口 | 用途 |
 | --- | --- | --- |
-| WLOC设置位置 xepes0 | [https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01](https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01) | 从地图分享位置，解析坐标并保存到代理客户端 |
+| MyWLoc设置位置（上游安装模板） | [https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01](https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01) | 安装后复制、改名，并把解析地址换成自己的 Worker |
 | wloc 清理恢复位置 | [https://www.icloud.com/shortcuts/f42632d406504f24a2cd163af4fe012f](https://www.icloud.com/shortcuts/f42632d406504f24a2cd163af4fe012f) | 清除已保存的虚拟坐标 |
 
-“WLOC设置位置 xepes0”基于原作者版本，当前解析服务为：
+上面的设置位置指令只作为一次性安装模板。复制为“MyWLoc设置位置”后，把其中的解析服务改成自己一键部署得到的地址：
 
 ```text
-https://wloc.xepesw.workers.dev/api/parse
+https://<你的Worker域名>/api/parse
 ```
 
-维护者已对当前快捷指令的 `/api/parse?format=json` 解析链路进行过真机测试。**这只表示快捷指令解析链路可工作，不代表 iOS 27 正式版支持传统 WLOC。**
+保留 `/api/parse?format=json`、地图分享链接变量以及 `https://gs-loc.apple.com/wloc-settings/save`。修改后的快捷指令运行时只访问自己的 Worker，不再依赖模板发布者。**解析链路可工作不代表 iOS 27 正式版支持传统 WLOC。**
 
 已安装的旧快捷指令不会自动更新；如果一直使用旧版本，可能出现“获取词典值失败”等错误。更多迁移说明见 [快捷指令迁移说明](docs/shortcut-guide.md#快捷指令)。
 
@@ -240,7 +240,9 @@ https://wloc.xepesw.workers.dev/api/parse
 
 打开：
 
-**https://wloc.xepesw.workers.dev/**
+```text
+https://<你的Worker域名>/
+```
 
 可以在地图上选点、搜索地点、输入经纬度或粘贴地图分享链接。
 
@@ -276,7 +278,7 @@ flowchart LR
 ### 3. 在系统分享菜单中选择
 
 ```text
-WLOC设置位置 xepes0
+MyWLoc设置位置
 ```
 
 流程：
@@ -285,7 +287,7 @@ WLOC设置位置 xepes0
 flowchart LR
     A[Apple 地图] --> B[搜索 / 长按选点]
     B --> C[共享]
-    C --> D[WLOC设置位置 xepes0]
+    C --> D[MyWLoc设置位置]
     D --> E[解析分享链接]
     E --> F[得到经纬度]
     F --> G[保存到 WLOC]
@@ -293,7 +295,7 @@ flowchart LR
 
 ### 分享菜单里没有 WLOC？
 
-先打开“快捷指令”App，手动运行一次“WLOC设置位置 xepes0”，完成系统要求的权限询问。
+先打开“快捷指令”App，手动运行一次“MyWLoc设置位置”，完成系统要求的权限询问。
 
 然后重新：
 
@@ -304,7 +306,7 @@ Apple 地图
 → 更多
 ```
 
-检查“WLOC设置位置 xepes0”是否出现在系统分享菜单中。
+检查“MyWLoc设置位置”是否出现在系统分享菜单中。
 
 ## 六、高德地图分享到快捷指令
 
@@ -316,14 +318,14 @@ Apple 地图
 → 分享
 → 更多
 → iOS 系统分享菜单
-→ WLOC设置位置 xepes0
+→ MyWLoc设置位置
 ```
 
 不要只复制地点名称。快捷指令需要地图分享产生的 URL / 文本，再交给解析接口转换成经纬度。
 
 ## 七、快捷指令保存坐标后：必须按顺序刷新定位
 
-“WLOC设置位置 xepes0”保存坐标后，会跳转到：
+“MyWLoc设置位置”保存坐标后，会跳转到：
 
 ```text
 设置
@@ -471,7 +473,7 @@ latitude
 当前解析接口使用：
 
 ```text
-https://wloc.xepesw.workers.dev/api/parse?format=json&u=...
+https://<你的Worker域名>/api/parse?format=json&u=...
 ```
 
 如果仍在使用旧快捷指令，请改用 README 当前提供的版本。
@@ -486,9 +488,7 @@ https://gs-loc.apple.com/wloc-settings/save
 
 ### 快捷指令分享链接提示“无法找到捷径”
 
-先重新打开 README 当前提供的 iCloud 快捷指令链接。如果 iCloud 分享服务暂时异常，也可以直接使用网页选点：
-
-**https://wloc.xepesw.workers.dev/**
+先重新打开 README 当前提供的 iCloud 快捷指令模板。如果模板链接失效，仍可按[快捷指令迁移说明](docs/shortcut-guide.md#快捷指令)手动构建；也可以直接打开自己部署的 Worker 根地址使用网页选点。
 
 ### 网页显示保存成功，但地图位置不变
 
@@ -561,7 +561,7 @@ npm run deploy
 
 本项目使用 Node.js 22 或更新版本；Wrangler 已固定到锁文件。部署不需要 KV 或数据库。Cloudflare Pages 配置也保留，见[部署说明](docs/DEPLOYMENT.md)。
 
-原作者的公共 Worker 和 Pages 不再作为默认选点服务；上方设置位置快捷指令已使用本仓库的新解析服务，自行部署时可按实际地址迁移。新维护者在 `project.config.json` 中填写仓库、发布分支及可选的选点站点，再运行：
+原作者及其他维护者的公共 Worker 和 Pages 不作为默认选点服务。点击上方一键部署按钮后，将取得的 Worker 地址填写到 `project.config.json`，并把快捷指令解析地址换成自己的 `/api/parse`。配置变更后运行：
 
 ```sh
 npm run configure
@@ -641,4 +641,3 @@ npm run pages:build
 - 本项目按“原样”提供，不提供任何形式的担保。
 
 不要使用本项目欺骗服务、绕过规则、伪造生产环境定位数据，或在未经授权的设备和网络上使用。
-
