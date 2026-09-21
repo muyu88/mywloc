@@ -93,7 +93,7 @@ flowchart LR
 | Stash | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.stoverride](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.stoverride) |
 | Shadowrocket | [https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.module](https://raw.githubusercontent.com/muyu88/mywloc/refs/heads/main/modules/wloc.module) |
 
-选点页面：尚未配置公共实例，请按下方说明自行部署。
+选点页面：[https://mywloc.muyu1522021.workers.dev/](https://mywloc.muyu1522021.workers.dev/)。
 
 [浏览源码](https://github.com/muyu88/mywloc) · [部署到 Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/muyu88/mywloc/tree/main/worker)
 <!-- subscriptions:end -->
@@ -229,7 +229,7 @@ Certificate
 上面的设置位置指令只作为一次性安装模板。复制为“MyWLoc设置位置”后，把其中的解析服务改成自己一键部署得到的地址：
 
 ```text
-https://<你的Worker域名>/api/parse
+https://mywloc.muyu1522021.workers.dev/api/parse
 ```
 
 保留 `/api/parse?format=json`、地图分享链接变量以及 `https://gs-loc.apple.com/wloc-settings/save`。修改后的快捷指令运行时只访问自己的 Worker，不再依赖模板发布者。**解析链路可工作不代表 iOS 27 正式版支持传统 WLOC。**
@@ -241,7 +241,7 @@ https://<你的Worker域名>/api/parse
 打开：
 
 ```text
-https://<你的Worker域名>/
+https://mywloc.muyu1522021.workers.dev/
 ```
 
 可以在地图上选点、搜索地点、输入经纬度或粘贴地图分享链接。
@@ -473,7 +473,7 @@ latitude
 当前解析接口使用：
 
 ```text
-https://<你的Worker域名>/api/parse?format=json&u=...
+https://mywloc.muyu1522021.workers.dev/api/parse?format=json&u=...
 ```
 
 如果仍在使用旧快捷指令，请改用 README 当前提供的版本。

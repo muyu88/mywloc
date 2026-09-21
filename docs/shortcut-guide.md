@@ -24,7 +24,7 @@
 
 ### 替换旧解析服务
 
-本仓库不预设公共选点服务。点击 README 中的一键部署按钮取得自己的 Worker 地址；选点网页是 Worker 根地址，解析接口是 `https://<你的Worker域名>/api/parse`，原有查询参数和输入变量必须保留。
+本仓库使用自托管选点服务 `https://mywloc.muyu1522021.workers.dev/`；选点网页是 Worker 根地址，解析接口是 `https://mywloc.muyu1522021.workers.dev/api/parse`，原有查询参数和输入变量必须保留。
 
 1. 按[部署说明](DEPLOYMENT.md)部署自己的 Worker，取得 HTTPS 地址。
 2. 如果已经装过旧指令，先在「快捷指令」App 中复制一份备份，再打开设置指令的编辑界面。
@@ -34,7 +34,7 @@
 
 README 和模块中的新 GitHub 地址不会自动同步到已安装的快捷指令。如果 iCloud 分享失效，仍可使用自部署选点网页；本仓库未恢复可直接导入的 `.shortcut` 文件。
 
-解析接口：`GET https://<你的Worker域名>/api/parse?format=json&u=<URL编码的地图链接>`，成功返回 `lat`、`lon`、`name`。使用「获取词典值」的快捷指令必须保留 `format=json`，并对输入地图链接进行 URL 编码。站点根地址返回选点网页，不能代替解析接口。不带 `format=json` 时默认返回 `lat=...&lon=...` 纯文本，供旧快捷指令兼容使用。保存接口仍为 `https://gs-loc.apple.com/wloc-settings/save`，它由手机代理脚本拦截，不是 Worker 路由；不要将这个 Apple 地址替换为 Worker 域名。
+解析接口：`GET https://mywloc.muyu1522021.workers.dev/api/parse?format=json&u=<URL编码的地图链接>`，成功返回 `lat`、`lon`、`name`。使用「获取词典值」的快捷指令必须保留 `format=json`，并对输入地图链接进行 URL 编码。站点根地址返回选点网页，不能代替解析接口。不带 `format=json` 时默认返回 `lat=...&lon=...` 纯文本，供旧快捷指令兼容使用。保存接口仍为 `https://gs-loc.apple.com/wloc-settings/save`，它由手机代理脚本拦截，不是 Worker 路由；不要将这个 Apple 地址替换为 Worker 域名。
 
 手动构建快捷指令时：接收分享文本 → URL 编码后请求解析接口 → 检查成功 JSON → 将 lat/lon 传给保存接口。恢复操作使用相同保存路径并附 `?action=clear`。先检查失败响应，避免把空结果写入设备。
 
